@@ -1,0 +1,80 @@
+<!-- <p>register works!</p> -->
+<div class="register ">
+
+  <form class="w-25 m-auto p-5 my-5 rounded-4  border border-info rounded" [formGroup]="registerForm" (ngSubmit)="submitRegisterForm(registerForm)">
+    <p class="form-title text-center fw-bold fs-3">Sign up </p>
+
+    <div class="mb-3">
+      <label for="first_name" class="form-label fs-5 ">First Name :</label>
+      <input type="text" formControlName="first_name" class="form-control" id="first_name"  >
+      <div class="alert alert-danger my-1 p-0" *ngIf="registerForm.get('first_name')?.errors && registerForm.get('first_name')?.touched">
+        <p  *ngIf="registerForm.get('first_name')?.getError('required')">Name is required</p>
+        <p  *ngIf="registerForm.get('first_name')?.getError('minlength')">minlenght of name is 3 </p>
+        <p  *ngIf="registerForm.get('first_name')?.getError('maxlength')">maxlenght of name is 30 </p>
+      </div>
+
+
+    </div>
+    <div class="mb-3">
+      <label for="last_name" class="form-label fs-5 ">Last Name :</label>
+      <input type="text" formControlName="last_name" class="form-control" id="last_name"  >
+      <div class="alert alert-danger my-1 p-0" *ngIf="registerForm.get('last_name')?.errors && registerForm.get('last_name')?.touched">
+        <p  *ngIf="registerForm.get('last_name')?.getError('required')">Name is required</p>
+        <p  *ngIf="registerForm.get('last_name')?.getError('minlength')">minlenght of name is 3 </p>
+        <p  *ngIf="registerForm.get('last_name')?.getError('maxlength')">maxlenght of name is 30 </p>
+      </div>
+      </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label fs-5 ">Email address</label>
+          <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" placeholder="example@gmail.com" aria-describedby="emailHelp">
+          <div class="alert alert-danger my-1 p-0" *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched">
+            <p  *ngIf="registerForm.get('email')?.getError('required')">email is required</p>
+            <p  *ngIf="registerForm.get('email')?.getError('email')">email is invalid </p>
+
+          </div>
+        </div>
+ 
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label fs-5">Password</label>
+      <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1">
+      <div class="alert alert-danger my-1 p-0" *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched">
+        <p  *ngIf="registerForm.get('password')?.getError('required')">password is required</p>
+        <p  *ngIf="registerForm.get('password')?.getError('pattern')"> password must start with uppercase </p>
+
+
+      </div>
+    </div>
+    <div class=" mb-3">
+      <div class="form-outline">
+      <label for="ccExpiration" class="form-label fs-5 ">Cart Number :</label>
+
+          <input type="text" formControlName="ccExpiration" class="form-control" placeholder="Expiration" />
+          <div class="alert alert-danger my-1 p-0" *ngIf="registerForm.get('ccExpiration')?.errors && registerForm.get('ccExpiration')?.touched">
+            <p  *ngIf="registerForm.get('ccExpiration')?.getError('required')">ccExpiration is required</p>
+            <p  *ngIf="registerForm.get('ccExpiration')?.getError('minlength')">minlenght of ccExpiration is 16 </p>
+            <p  *ngIf="registerForm.get('ccExpiration')?.getError('maxlength')">maxlenght of ccExpiration is 16 </p>
+    
+    
+          </div>
+      </div>
+  </div>
+  <div class=" mb-3">
+      <div class="form-outline">
+      <label for="ccCvv" class="form-label fs-5 ">Cvv :</label>
+
+          <input type="text" formControlName="ccCvv" class="form-control" placeholder="CVV" />
+          <div class="alert alert-danger my-1 p-0" *ngIf="registerForm.get('ccCvv')?.errors && registerForm.get('ccCvv')?.touched">
+            <p  *ngIf="registerForm.get('ccCvv')?.getError('required')">ccCvv is required</p>
+            <p  *ngIf="registerForm.get('ccCvv')?.getError('minlength')">minlenght of ccCvv is 3 </p>
+            <p  *ngIf="registerForm.get('ccCvv')?.getError('maxlength')">maxlenght of ccCvv is 3 </p>
+    
+    
+          </div>
+      </div>
+  </div>
+
+    <button  [disabled]="registerForm.invalid" type="submit"  class="btn btn-primary w-100 fs-5"> Sign up</button>
+
+  </form>
+
+</div>

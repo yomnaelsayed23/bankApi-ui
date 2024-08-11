@@ -1,0 +1,42 @@
+<nav *ngIf="roles!=null" class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" style="font-size: 40px;" routerLink="/customers">Digital Banking</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-size: 24px;">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" *ngIf="roles!=null && roles.includes('ADMIN')">
+          <a class="nav-link" routerLink="/customers">All Customers</a>
+        </li>
+
+        <li class="nav-item" *ngIf="roles!=null && roles.includes('ADMIN')">
+          <a class="nav-link" routerLink="/accounts">Manage Accounts</a>
+        </li>
+
+        <li class="nav-item" *ngIf="roles!=null && roles.includes('ADMIN')">
+          <a class="nav-link" routerLink="/add-customer">Add Customer</a>
+        </li>
+
+
+        <li class="nav-item" *ngIf="roles!=null && roles.includes('CUSTOMER')">
+          <a class="nav-link" routerLink="/customer-accounts/{{customer.id}}">My Accounts</a>
+        </li>
+
+        <li class="nav-item" *ngIf="roles!=null && roles.includes('CUSTOMER')">
+          <a class="nav-link" routerLink="/update-customer/{{customer.id}}">Edit profile</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" >
+          <button class="btn btn-info" style="width:120px;margin: 20px">{{auth.WohLogin()}}</button>
+        </li>
+        <li class="nav-item" >
+          <button class="btn btn-danger"  style="width:120px;margin: 20px" (click)="logout()">Logout</button>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
